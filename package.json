@@ -1,0 +1,21 @@
+{
+  "name": "cypress_example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:server": "mb --debug | node --inspect -r dotenv/config index.js dotenv_config_path=test.env",
+    "start": "node --inspect -r dotenv/config index.js dotenv_config_path=prod.env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cypress": "^13.4.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mountebank": "^2.9.1"
+  }
+}
