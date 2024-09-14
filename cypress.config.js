@@ -1,9 +1,9 @@
-const { defineConfig } = require('cypress')
+import axios from 'axios';
+import { defineConfig } from 'cypress';
 
 const mountebankUrl  = 'http://localhost:2525/imposters'
-const axios = require('axios')
 
-module.exports = defineConfig({
+export default defineConfig({
 
   fileServerFolder: './test/cypress',
   e2e: {

@@ -1,6 +1,38 @@
-# How the application works
+# What is the application
 
-Project consists of microservice architecture where `index.js` exposes an API endpoint at '/'. This calls `microservice.js` at `/data` and the user is presented with `Hello to: John`. This setup is tested using Cypress.
+Project consists of microservice architecture with 2 Express applications.
+
+## Endpoints
+1. **Index**
+    - **Request:**
+      ```
+      GET /
+      ```
+    - **Response**
+      ```
+      200 OK
+
+      Hello to: John
+      ```
+2. **Hello World**
+    - **Request:**
+      ```
+      GET /helloworld
+      ```
+    - **Response**
+      ```
+      200 OK
+
+      <!DOCTYPE html>
+      <html lang="en">
+        ...
+      </html>
+      ```
+
+## How the application works
+
+- `/` in `index.js` calls `/data` in `microservice.js` and returns `Hello to: John`. This setup is tested using Cypress
+- `helloworld` returns the `hello.njk` view. This is tested using the template tests
 
 ## How Cypress works
 
@@ -41,7 +73,13 @@ POST /imposters
 
 Now `GET localhost:8000/data` will return a stubbed response.
 
-## How to run the tests
+## How the template tests work
+
+Template tests are a lighter touch than the Cypress tests as they don't involve starting the express app and just assert on the HTML elements.
+
+`nunjucks` is used to load the view with `render` passing in the data. `Cheerio` to load the HTML from the view. A custom `Chai` plugin is defined with custom assertions (e.g. `containSelector('#msg')`).
+
+## How to run the Cypress tests
 
 1. Start up Mountebank:
 ```
@@ -51,4 +89,10 @@ npm run cypress:server
 2. Start up Cypress:
 ```
 npm run cypress:open
+```
+
+## How to run the template tests
+
+```
+npm run test
 ```

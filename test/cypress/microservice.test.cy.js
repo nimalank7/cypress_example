@@ -1,5 +1,3 @@
-const axios = require('axios')
-
 const imposter = {
     "port": 8000,
     "protocol": "http",
